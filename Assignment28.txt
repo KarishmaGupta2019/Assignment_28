@@ -1,0 +1,47 @@
+Q1.   Create a table (student) with 3 columns (rollno, name, course).
+Ans1. create table student(rollno int,name text, course text);
+
+Q2.   Insert records for 4 students.
+Ans2. insert into student values(1,'Ankita','Python');
+      insert into student values(2,'Kunal','Java');
+      insert into student values(3,'Yash','C++');
+      insert into student values (4,'Roohi','C');
+
+OR
+      insert into student (rollno,name,course)
+      values(1,'Ankita','Python'),(2,'Kunal','Java'),(3,'Yash','C++'),(4,'Roohi','C');
+
+Q3.   Write a Select query to fetch all the students.
+Ans3. select * from student;
+
+Q4.   Update the student name of rollno 3 with ‘Mohan’
+Ans4. update student
+      set name='Mohan'
+      where rollno=3;
+
+Q5.   Delete any student from table with their rollno.
+Ans5. delete from student
+      where rollno=2;
+
+Q6.   Delete all the data from student table.
+Ans6. delete from student;
+
+Q7.   Drop the student table.
+Ans7. drop table student;
+
+Q8.   Create Courses table (cid, cname) where cid is a primary key and Student table
+(rollno, name, cid) where rollno is a primary key and cid is a foreign key.
+Ans8. create table Courses(cid int,cname text,primary key(cid));
+      create table Student(rollno int, name text, cid int, primary key(rollno), constraint fk_stud foreign key(cid) references courses(cid));
+      
+
+Q9. Insert data in both the tables.
+Ans9. insert into Courses(cid,cname)
+      values(1,'Python'),(2,'Java'),(3,'Python'),(4,'C++');
+
+      insert into Student(rollno, name, cid)
+      values(1,'Krish', 1),(2,'Bartika',4),(3,'Harsh',1),(4,'Rahul',1);
+
+Q10. Select all the students who are doing a specific course, eg. Python.
+Ans 10. Select * from Student
+        where cid = (select cid from Courses where cname = 'Python');
